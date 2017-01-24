@@ -140,8 +140,50 @@ var linqscript;
         List.prototype.ToArray = function () {
             return $(this).toArray();
         };
-        List.prototype.Count = function () {
-            return this.length;
+        List.prototype.Count = function (delegate, args) {
+            if (delegate === void 0) { delegate = null; }
+            if (args === void 0) { args = null; }
+            try {
+                if (delegate == null)
+                    return this.length;
+                if (!this.validDelegate(delegate))
+                    return 0;
+                var length = 0;
+                for (var i = 0; i < this.length; i++) {
+                    var c = this[i];
+                    if (c === null)
+                        continue;
+                    var elem = delegate.call(args, c);
+                    if (elem != null && elem !== false)
+                        length++;
+                }
+                return length;
+            }
+            catch (ex) {
+                return 0;
+            }
+        };
+        List.prototype.Any = function (delegate, args) {
+            if (delegate === void 0) { delegate = null; }
+            if (args === void 0) { args = null; }
+            try {
+                if (delegate == null)
+                    return this.length > 0;
+                if (!this.validDelegate(delegate))
+                    return false;
+                for (var i = 0; i < this.length; i++) {
+                    var c = this[i];
+                    if (c === null)
+                        continue;
+                    var elem = delegate.call(args, c);
+                    if (elem != null && elem !== false)
+                        return true;
+                }
+                return false;
+            }
+            catch (ex) {
+                return false;
+            }
         };
         List.prototype.Equals = function (list) {
             if (list.length !== this.length)

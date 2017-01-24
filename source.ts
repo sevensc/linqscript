@@ -157,8 +157,55 @@ namespace linqscript {
             return $(this).toArray();
         }
 
-        public Count() {
-            return this.length;
+         public Count(delegate: (value: T) => boolean = null, args: any = null): number {
+            try {
+                if (delegate == null)
+                    return this.length;
+                
+                if (!this.validDelegate(delegate))
+                    return 0;
+
+                let length = 0;
+                for (let i = 0; i < this.length; i++) {
+                    const c = this[i];
+                    if (c === null)
+                        continue;
+
+                    const elem = delegate.call(args, c);
+                    if (elem != null && elem !== false)
+                        length++;
+                }
+
+                return length;
+            }
+            catch (ex) {
+                return 0;
+            }
+        }
+        
+        public Any(delegate: (value: T) => boolean = null, args: any = null): boolean {
+            try {
+                if (delegate == null)
+                    return this.length > 0;
+
+                if (!this.validDelegate(delegate))
+                    return false;
+
+                for (let i = 0; i < this.length; i++) {
+                    const c = this[i];
+                    if (c === null)
+                        continue;
+
+                    const elem = delegate.call(args, c);
+                    if (elem != null && elem !== false)
+                        return true;
+                }
+
+                return false;
+            }
+            catch (ex) {
+                return false;
+            }
         }
 
         public Equals(list: List<T>): boolean {

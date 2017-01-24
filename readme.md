@@ -23,23 +23,23 @@ class Fruits {
 	public Color: Color;
 }
 
-var list = new List<Fruits>();
+var fruits = new List<Fruits>();
 var apple = new Fruit();
 apple.Color = Color.Green;
 apple.Name = "Apple";
-list.Add(apple);
+fruits.Add(apple);
 
 var redApple = new Fruit();
 redApple.Color = Color.Red;
 redApple.Name = "Apple";
-list.Add(redApple);
+fruits.Add(redApple);
 
 var kiwi = new Fruit();
 kiwi.Color = Color.Green;
 kiwi.Name = "Kiwi";
-list.Add(kiwi);
+fruits.Add(kiwi);
 
-list.Where(x => x.Color === Color.Green);
+fruits.Where(x => x.Color === Color.Green);
 ```
 ```json
 Output as JSON:
@@ -55,7 +55,7 @@ Output as JSON:
 ```
 
 ```typescript
-list.Select(x => x.Color);
+fruits.Select(x => x.Color);
 ```
 ```json
 {
@@ -66,7 +66,7 @@ list.Select(x => x.Color);
 }
 ```
 ```typescript
-list.Distinct(x => x.Name)
+fruits.Distinct(x => x.Name)
 ```
 ```json
 {
@@ -83,24 +83,27 @@ list.Distinct(x => x.Name)
 
 
 ## Methods
-| Method        |   Description                                       | Parameter     |
-| ------------- |:-------------                                       |:-----         |
-|  `Where`      |   Returns list, where delegate returns true.        | `Delegate`   |
-| `Select`      |   Returns list of selected value                    | `Delegate`   | 
-| `Distinct`    |   Returns grouped selected value.                   | `Delegate`   |
-| `First`       |   Returns first item in list.                      |               |
-| `Last`        |   Returns last item in list.                       |               |
-|`Add`          |   Adds element to list.                             | `item`     	|
-|`AddRange`     |   Adds each item in given list.                    | `items`    	|
-|`RemoveAt`     |   Removes item from list by index.                 | `index`       |
-|`Remove`     	|   Removes item from list.                 | `index`       |
-|`IndexOf`      |   Gets index of given item.                         | `item`        |
-|`Contains`     |   Return true if list contains given item.          | `item`        |
-|`Get`          |   Gets item by index.                               | `index`       |
-|`Clear`        |   Clears list.                                      |               |
-|`ToArray`      |   Converts list to array. Important for serialization. | `item`        |
-|`Count`        |   Returns listcount.                              |               |
-|`Equals`       |   Compares lists. Returns true if lists are equal.                                  | `item`        |
+| Method        |   Description                                             | Parameter     |
+| ------------- |:-------------                                             |:-----         |
+|  `Where`      |   Returns list, where delegate returns true.              | `Delegate`    |
+| `Select`      |   Returns list of selected value                          | `Delegate`    | 
+| `Distinct`    |   Returns grouped selected value.                         | `Delegate`    |
+| `First`       |   Returns first item in list.                             |               |
+| `Last`        |   Returns last item in list.                              |               |
+|`Add`          |   Adds element to list.                                   | `item`     	|
+|`AddRange`     |   Adds each item in given list.                           | `items`    	|
+|`RemoveAt`     |   Removes item from list by index.                        | `index`       |
+|`Remove`     	|   Removes item from list.                                 | `item`        |
+|`IndexOf`      |   Gets index of given item.                               | `item`        |
+|`Contains`     |   Return true if list contains given item.                | `item`        |
+|`Get`          |   Gets item by index.                                     | `index`       |
+|`Clear`        |   Clears list.                                            |               |
+|`ToArray`      |   Converts list to array. Important for serialization.    | `item`        |
+|`Count`        |   Returns listcount.                                      |               |
+|`Count`        |   Returns listcount by delegate.                          | `Delegate`    |
+|`Any`          |   Returns true if list contains any item.                 |               |
+|`Any`          |   Returns true if list contains any item by delegate.     | `Delegate`    |
+|`Equals`       |   Compares lists. Returns true if lists are equal.        | `item`        |
 
 
 Usage without Typescript:
@@ -112,5 +115,5 @@ var fruits = new linqscript.List();
 fruits.Add("Apple");
 fruits.Add("Kiwi");
 
-var value = list.Where(function(x) { return x === "Kiwi" });
+var value = fruits.Where(function(x) { return x === "Kiwi" });
 ```
