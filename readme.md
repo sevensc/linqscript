@@ -109,8 +109,8 @@ e.g.
 ```javascript
 var fruits = new linqscript.List();
 
-fruits.Add("fruit");
-fruits.Add("banana");
+fruits.Add("Apple");
+fruits.Add("Kiwi");
 
-var value = list.Where(function(x) { return x == "apple" });
+var value = list.Where(function(x) { return x === "Kiwi" });
 ```
