@@ -1,0 +1,24 @@
+{
+  "name": "linqscript",
+  "version": "1.0.1",
+  "description": "Simple lightweight lambda syntax library for Typescript",
+  "main": "source.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sevensc/linqscript.git"
+  },
+  "keywords": [
+    "linqscript",
+    "lambda"
+  ],
+  "author": "Sven Ulrich <sven_ulrich@gmx.net> (holdmybeer.de)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/sevensc/linqscript/issues"
+  },
+  "homepage": "https://github.com/sevensc/linqscript#readme",
+  "dependencies": {}
+}
