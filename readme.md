@@ -110,7 +110,7 @@ Usage without Typescript:
 
 e.g.
 ```javascript
-var fruits = new linqscript.List();
+var fruits = new ls.List();
 
 fruits.Add("Apple");
 fruits.Add("Kiwi");
