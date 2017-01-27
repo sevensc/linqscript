@@ -3,12 +3,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var linqscript;
-(function (linqscript) {
+var ls;
+(function (ls) {
     var List = (function (_super) {
         __extends(List, _super);
         function List() {
-            return _super.apply(this, arguments) || this;
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         List.prototype.validDelegate = function (delegate) {
             if (this.length <= 0)
@@ -148,16 +148,16 @@ var linqscript;
                     return this.length;
                 if (!this.validDelegate(delegate))
                     return 0;
-                var length = 0;
+                var length_1 = 0;
                 for (var i = 0; i < this.length; i++) {
                     var c = this[i];
                     if (c === null)
                         continue;
                     var elem = delegate.call(args, c);
                     if (elem != null && elem !== false)
-                        length++;
+                        length_1++;
                 }
-                return length;
+                return length_1;
             }
             catch (ex) {
                 return 0;
@@ -198,10 +198,10 @@ var linqscript;
         };
         return List;
     }(Array));
-    linqscript.List = List;
-})(linqscript || (linqscript = {}));
+    ls.List = List;
+})(ls || (ls = {}));
 Array.prototype.ToList = function () {
-    var list = new linqscript.List();
+    var list = new ls.List();
     for (var i = 0; i < this.length; i++)
         list.Add(this[i]);
     return list;

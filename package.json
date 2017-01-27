@@ -1,6 +1,6 @@
 {
   "name": "linqscript",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple lightweight lambda syntax library for Typescript",
   "main": "source.ts",
   "scripts": {
@@ -20,5 +20,8 @@
     "url": "https://github.com/sevensc/linqscript/issues"
   },
   "homepage": "https://github.com/sevensc/linqscript#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "qunitjs": "^2.1.1"
+  }
 }

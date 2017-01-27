@@ -1,4 +1,4 @@
-namespace linqscript {
+namespace ls {
     export class List<T> extends Array<T> {
 
         private validDelegate(delegate: any): boolean {
@@ -226,13 +226,13 @@ namespace linqscript {
 }
 
 interface Array<T> {
-    ToList(): linqscript.List<T>;
+    ToList(): ls.List<T>;
     first();
     last();
 }
 
 Array.prototype.ToList = function () {
-    var list = new linqscript.List();
+    var list = new ls.List();
     for (var i = 0; i < this.length; i++)
         list.Add(this[i]);
     return list;
