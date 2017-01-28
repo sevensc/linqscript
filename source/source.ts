@@ -1,4 +1,5 @@
 namespace ls {
+    declare var $;
     export class List<T> extends Array<T> {
 
         private validDelegate(delegate: any): boolean {

@@ -8,7 +8,7 @@ var ls;
     var List = (function (_super) {
         __extends(List, _super);
         function List() {
-            return _super !== null && _super.apply(this, arguments) || this;
+            _super !== null && _super.apply(this, arguments) || this;
         }
         List.prototype.validDelegate = function (delegate) {
             if (this.length <= 0)

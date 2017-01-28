@@ -42,7 +42,7 @@ fruits.Add(kiwi);
 fruits.Where(x => x.Color === Color.Green);
 ```
 ```json
-Output as JSON:
+Output:
 {
 	"Fruits": [{
 		"Name": "Kiwi",
@@ -70,7 +70,7 @@ fruits.Distinct(x => x.Name)
 ```
 ```json
 {
-	"Color": [
+	"Name": [
 		"Apple",
 		"Kiwi"
 	]
