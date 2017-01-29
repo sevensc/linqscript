@@ -8,13 +8,13 @@ var ls;
     var List = (function (_super) {
         __extends(List, _super);
         function List() {
-            _super !== null && _super.apply(this, arguments) || this;
+             _super !== null && _super.apply(this, arguments) || this;
         }
         List.prototype.validDelegate = function (delegate) {
             if (this.length <= 0)
                 return false;
             if (typeof delegate !== "function")
-                throw new TypeError(delegate + ' is not a function');
+                throw new TypeError(delegate + "  is not a function");
             return true;
         };
         List.prototype.Where = function (delegate, args) {
@@ -81,10 +81,20 @@ var ls;
                 return false;
             }
         };
-        List.prototype.AddRange = function (items) {
+        List.prototype.AddRange = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
             try {
-                for (var i = 0; i < items.length; i++)
-                    this.Add(items[i]);
+                if (args === null || args[0] === null)
+                    return false;
+                if (Object.prototype.toString.call(args[0]) === '[object Array]')
+                    args = args[0];
+                else if (args[0].constructor.name === "List")
+                    args = args[0];
+                for (var i = 0; i < args.length; i++)
+                    this.Add(args[i]);
                 return true;
             }
             catch (ex) {
@@ -111,7 +121,7 @@ var ls;
         };
         List.prototype.IndexOf = function (item) {
             try {
-                return $.inArray(item, this);
+                return this.indexOf(item);
             }
             catch (ex) {
                 return -1;
@@ -138,7 +148,10 @@ var ls;
                 this.RemoveAt(i);
         };
         List.prototype.ToArray = function () {
-            return $(this).toArray();
+            var array = new Array();
+            for (var i = 0; i < this.length; i++)
+                array.push(this[i]);
+            return array;
         };
         List.prototype.Count = function (delegate, args) {
             if (delegate === void 0) { delegate = null; }

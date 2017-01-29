@@ -1,6 +1,6 @@
 {
   "name": "linqscript",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Simple lightweight lambda syntax library for Typescript",
   "main": "source.ts",
   "scripts": {
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "linqscript",
-    "lambda"
+    "lambda",
+    "typescript"
   ],
   "author": "Sven Ulrich <sven_ulrich@gmx.net> (holdmybeer.de)",
   "license": "UNLICENSED",

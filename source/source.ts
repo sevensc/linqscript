@@ -1,13 +1,12 @@
 namespace ls {
     declare var $;
     export class List<T> extends Array<T> {
-
         private validDelegate(delegate: any): boolean {
             if (this.length <= 0)
                 return false;
 
             if (typeof delegate !== "function")
-                throw new TypeError(delegate + ' is not a function');
+                throw new TypeError(`${delegate}  is not a function`);
 
             return true;
         }
@@ -91,10 +90,18 @@ namespace ls {
             }
         }
 
-        public AddRange(items: List<T>): boolean {
+        public AddRange(...args): boolean {
             try {
-                for (let i = 0; i < items.length; i++)
-                    this.Add(items[i]);
+                if(args === null || args[0] === null)
+                    return false;
+            
+                if(Object.prototype.toString.call(args[0]) === '[object Array]')
+                    args = args[0];
+                else if(args[0].constructor.name === "List")
+                    args = args[0]
+            
+                for (let i = 0; i < args.length; i++)
+                    this.Add(args[i]);
                 return true;
             }
             catch (ex) {
@@ -124,7 +131,7 @@ namespace ls {
 
         public IndexOf(item: any): number {
             try {
-                return $.inArray(item, this);
+                return this.indexOf(item);
             }
             catch (ex) {
                 return -1;
@@ -155,10 +162,13 @@ namespace ls {
         }
 
         public ToArray() {
-            return $(this).toArray();
+            var array = new Array<T>();
+            for (let i = 0; i < this.length; i++)
+                array.push(this[i]);
+            return array;
         }
 
-         public Count(delegate: (value: T) => boolean = null, args: any = null): number {
+        public Count(delegate: (value: T) => boolean = null, args: any = null): number {
             try {
                 if (delegate == null)
                     return this.length;
@@ -212,7 +222,6 @@ namespace ls {
         public Equals(list: List<T>): boolean {
             if (list.length !== this.length)
                 return false;
-
 
             list = list.ToList();
             for (let i = 0; i < this.length; i++) {
