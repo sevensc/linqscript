@@ -1,5 +1,5 @@
 # Simple lightweight lambda syntax library for Typescript. 
-#### jQuery required.
+#### No jQuery required!
 ###### Typescript arrow functions allows to use lambda syntax, which makes this easy to use.
 #### USAGE:
 
