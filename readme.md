@@ -1,5 +1,5 @@
-# Simple lightweight lambda syntax library for Typescript. 
-#### No jQuery required!
+# Simple lightweight lambda syntax library for Typescript.
+#### No jQuery required! Unit tested.
 ###### Typescript arrow functions allows to use lambda syntax, which makes this easy to use.
 #### USAGE:
 
@@ -86,7 +86,7 @@ fruits.Distinct(x => x.Name)
 | Method        |   Description                                             | Parameter     |
 | ------------- |:-------------                                             |:-----         |
 |  `Where`      |   Returns list, where delegate returns true.              | `Delegate`    |
-| `Select`      |   Returns list of selected value                          | `Delegate`    | 
+| `Select`      |   Returns list of selected value                          | `Delegate`    |
 | `Distinct`    |   Returns grouped selected value.                         | `Delegate`    |
 | `First`       |   Returns first item in list.                             |               |
 | `Last`        |   Returns last item in list.                              |               |

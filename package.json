@@ -1,6 +1,6 @@
 {
   "name": "linqscript",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple lightweight lambda syntax library for Typescript",
   "main": "source.ts",
   "scripts": {

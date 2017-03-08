@@ -94,12 +94,12 @@ namespace ls {
             try {
                 if(args === null || args[0] === null)
                     return false;
-            
+
                 if(Object.prototype.toString.call(args[0]) === '[object Array]')
                     args = args[0];
                 else if(args[0].constructor.name === "List")
                     args = args[0]
-            
+
                 for (let i = 0; i < args.length; i++)
                     this.Add(args[i]);
                 return true;
@@ -108,7 +108,7 @@ namespace ls {
                 return false;
             }
         }
-        
+
         public RemoveAt(index: number): boolean {
             try {
                 this.splice(index, 1);
@@ -118,7 +118,7 @@ namespace ls {
                 return false;
             }
         }
-        
+
         public Remove(item: T): boolean {
             try {
                 let index = this.IndexOf(item);
@@ -172,7 +172,7 @@ namespace ls {
             try {
                 if (delegate == null)
                     return this.length;
-                
+
                 if (!this.validDelegate(delegate))
                     return 0;
 
@@ -193,7 +193,7 @@ namespace ls {
                 return 0;
             }
         }
-        
+
         public Any(delegate: (value: T) => boolean = null, args: any = null): boolean {
             try {
                 if (delegate == null)
