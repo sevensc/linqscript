@@ -83,28 +83,28 @@ fruits.Distinct(x => x.Name)
 
 
 ## Methods
-| Method        |   Description                                             | Parameter     |
-| ------------- |:-------------                                             |:-----         |
-|  `Where`      |   Returns list, where delegate returns true.              | `Delegate`    |
-| `Select`      |   Returns list of selected value                          | `Delegate`    |
-| `Distinct`    |   Returns grouped selected value.                         | `Delegate`    |
-| `First`       |   Returns first item in list.                             |               |
-| `Last`        |   Returns last item in list.                              |               |
-|`Add`          |   Adds element to list.                                   | `item`     	|
-|`AddRange`     |   Adds each item in given list.                           | `items`    	|
-|`RemoveAt`     |   Removes item from list by index.                        | `index`       |
-|`Remove`     	|   Removes item from list.                                 | `item`        |
-|`IndexOf`      |   Gets index of given item.                               | `item`        |
-|`Contains`     |   Return true if list contains given item.                | `item`        |
-|`Get`          |   Gets item by index.                                     | `index`       |
-|`Clear`        |   Clears list.                                            |               |
-|`ToArray`      |   Converts list to array. Important for serialization.    | `item`        |
-|`Count`        |   Returns listcount.                                      |               |
-|`Count`        |   Returns listcount by delegate.                          | `Delegate`    |
-|`Any`          |   Returns true if list contains any item.                 |               |
-|`Any`          |   Returns true if list contains any item by delegate.     | `Delegate`    |
-|`Equals`       |   Compares lists. Returns true if lists are equal.        | `item`        |
-
+| Method        |   Description                                             | Parameter     			|
+| ------------- |:-------------                                             |:-----         			|
+|  `Where`      |   Returns list, where delegate returns true.              | `Delegate`    			|		
+| `Select`      |   Returns list of selected value                          | `Delegate`    			|
+| `Distinct`    |   Returns grouped selected value.                         | `Delegate`    			|
+| `First`       |   Returns first item in list.                             |               			|
+| `Last`        |   Returns last item in list.                              |               			|
+|`Add`          |   Adds element to list.                                   | `item`     				|
+|`AddRange`     |   Adds each item in given list.                           | `items`    				|
+|`RemoveAt`     |   Removes item from list by index.                        | `index`       			|
+|`Remove`     	|   Removes item from list.                                 | `item`        			|
+|`IndexOf`      |   Gets index of given item.                               | `item`        			|
+|`Contains`     |   Return true if list contains given item.                | `item`        			|
+|`Get`          |   Gets item by index.                                     | `index`       			|
+|`Clear`        |   Clears list.                                            |               			|
+|`ToArray`      |   Converts list to array. Important for serialization.    | `item`        			|
+|`Count`        |   Returns listcount.                                      |               			|
+|`Count`        |   Returns listcount by delegate.                          | `Delegate`    			|
+|`Any`          |   Returns true if list contains any item.                 |              		 		|
+|`Any`          |   Returns true if list contains any item by delegate.     | `Delegate`				|
+|`Equals`       |   Compares list with another list. Returns true if lists are equal. If comparePosition is set to false, equality will be checked without comparison on position        | `item`, `comparePosition (default true)` 	|
+|`ToList`       |   Converts an Array to list.						        |               			|
 
 Usage without Typescript:
 
