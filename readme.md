@@ -3,13 +3,15 @@
 ###### Typescript arrow functions allows to use lambda syntax, which makes this easy to use.
 #### USAGE:
 
+make sure to use a working module loader like [browserify](https://github.com/substack/node-browserify)
 ```typescript
+import { List } from './node_modules/source';
+
 var fruits = new List<string>();
 fruits.Add("apple");
 fruits.Add("banana");
 
 var fruit = fruits.Where(x => x === "apple").First();
-
 ```
 You can use of course more complex objects:
 ```typescript
@@ -106,14 +108,3 @@ fruits.Distinct(x => x.Name)
 |`Equals`       |   Compares list with another list. Returns true if lists are equal. If comparePosition is set to false, equality will be checked without comparison on position        | `item`, `comparePosition (default true)` 	|
 |`ToList`       |   Converts an Array to list.						        |               			|
 
-Usage without Typescript:
-
-e.g.
-```javascript
-var fruits = new ls.List();
-
-fruits.Add("Apple");
-fruits.Add("Kiwi");
-
-var value = fruits.Where(function(x) { return x === "Kiwi" });
-```
