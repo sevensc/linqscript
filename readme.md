@@ -1,11 +1,12 @@
+[![NPM](https://nodei.co/npm/linqscript.png?mini=true)](https://www.npmjs.com/package/linqscript)
 # Simple lightweight lambda syntax library for Typescript.
-#### No jQuery required! Unit tested.
-###### Typescript arrow functions allows to use lambda syntax, which makes this easy to use.
+## No jQuery required! Unit tested.
+##### Typescript arrow functions allows to use lambda syntax, which makes this easy to use.
 #### USAGE:
 
-make sure to use a working module loader like [browserify](https://github.com/substack/node-browserify)
+##### make sure to use a working module loader like [browserify](https://github.com/substack/node-browserify) or require using [nodejs](https://nodejs.org/en/)
 ```typescript
-import { List } from './node_modules/source';
+import { List } from './linqscript/source/source';
 
 var fruits = new List<string>();
 fruits.Add("apple");
@@ -78,10 +79,6 @@ fruits.Distinct(x => x.Name)
 	]
 }
 ```
-```html
-<script type="text/javascript" src="scripts/linqscript.js"></script>
-```
-#### also include latest jQuery version.
 
 
 ## Methods
