@@ -323,7 +323,7 @@ export class List<T> extends Array<T>{
     /**
      * needed to call recursive
      */
-    private equals(list, array, comparePosition): boolean {
+    private equals(list: any[], array: any[], comparePosition: boolean): boolean {
         if (!list)
             return false;
 
@@ -475,12 +475,12 @@ Array.prototype.Where = function (delegate, args) {
 declare global {
     interface Array<T> extends ArrayConstructor {
         Add(item: T): boolean;
-        AddRange(...args): boolean;
-        Any(delegate, args?): boolean;
+        AddRange(...args: any[]): boolean;
+        Any(delegate: any, args?: any[]): boolean;
         Clear(): boolean;
         Contains(item: T): boolean;
-        Count(delegate, args?): number;
-        Distinct(delegate, args?): List<T>;
+        Count(delegate: any, args?: any[]): number;
+        Distinct(delegate: any, args?: any[]): List<T>;
         Equals(list: List<T>, comparePosition: boolean): boolean;
         First(): T;
         Get(index: number): T;
@@ -488,9 +488,9 @@ declare global {
         Last(): T;
         Remove(item: T): boolean;
         RemoveAt(index: number): boolean;
-        Select(delegate, args?): List<T>;
+        Select(delegate: any, args?: any[]): List<T>;
         ToArray(): Array<T>;
         ToList(): List<T>;
-        Where(delegate, args?): List<T>;
+        Where(delegate: any, args?: any[]): List<T>;
     }
 }

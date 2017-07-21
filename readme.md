@@ -1,20 +1,20 @@
 [![NPM](https://nodei.co/npm/linqscript.png?mini=true)](https://www.npmjs.com/package/linqscript)
 # Simple lightweight lambda syntax library for Typescript.
 ## No jQuery required! Unit tested.
-##### Typescript arrow functions allows to use lambda syntax, which makes this easy to use.
-#### USAGE:
+##### Typescript arrow functions allows us, to use lambda syntax, which makes this easy to use.
 
-##### make sure to use a working module loader like [browserify](https://github.com/substack/node-browserify) or require using [nodejs](https://nodejs.org/en/)
 ```typescript
-import { List } from './linqscript/source/source';
-
+import { List } from 'linqscript';
+```
+#### USAGE:
+```typescript
 var fruits = new List<string>();
 fruits.Add("apple");
 fruits.Add("banana");
 
 var fruit = fruits.Where(x => x === "apple").First();
 ```
-You can use of course more complex objects:
+#### You can use of course more complex objects:
 ```typescript
 enum Color {
 	Green,
@@ -105,3 +105,4 @@ fruits.Distinct(x => x.Name)
 |`Equals`       |   Compares list with another list. Returns true if lists are equal. If comparePosition is set to false, equality will be checked without comparison on position        | `item`, `comparePosition (default true)` 	|
 |`ToList`       |   Converts an Array to list.						        |               			|
 
+#### any questions or feedback, please contact me!
