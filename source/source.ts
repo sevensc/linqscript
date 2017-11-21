@@ -1,5 +1,5 @@
 export class List<T> extends Array<T>{
-    public _array: any;
+    private _array: any;
     /**
      * Adds passed item to list.
      * @param item element to add
@@ -24,11 +24,11 @@ export class List<T> extends Array<T>{
             if (args === null || args[0] == null)
                 return false;
 
-            if (Object.prototype.toString.call(args) === '[object Array]')
+            if (Object.prototype.toString.call(args) === "[object Array]")
                 args = args[0];
 
             else if ((<any>args.constructor).name === "Array" || (<any>args.constructor).name === "List")
-                args = args[0]
+                args = args[0];
 
             for (let i = 0; i < args.length; i++)
                 this._array.push(args[i]);
@@ -140,7 +140,7 @@ export class List<T> extends Array<T>{
             if (delegate != null && !this.validDelegate(delegate))
                 return (<any>list).ToList();
 
-            for (var i = 0, l = this._array.length; i < l; i++) {
+            for (let i = 0, l = this._array.length; i < l; i++) {
                 const c = this._array[i];
                 if (c === null)
                     continue;
@@ -228,8 +228,8 @@ export class List<T> extends Array<T>{
      */
     public Remove(item: T): boolean {
         try {
-            var expectedLength = this._array.length - 1;
-            let index = this._array.indexOf(item);
+            const expectedLength = this._array.length - 1;
+            const index = this._array.indexOf(item);
             this._array.splice(index, 1);
             return expectedLength === this._array.length;
         }
@@ -283,7 +283,7 @@ export class List<T> extends Array<T>{
      */
     public ToArray(): Array<T> {
         try {
-            var array = new Array<T>();
+            const array = new Array<T>();
             for (let i = 0; i < this._array.length; i++)
                 array.push(this._array[i]);
             return <any>array;
@@ -327,18 +327,18 @@ export class List<T> extends Array<T>{
         if (!list)
             return false;
 
-        if (array.length != list.length)
+        if (array.length !== list.length)
             return false;
 
-        for (var i = 0, l = array.length; i < l; i++) {
+        for (let i = 0, l = array.length; i < l; i++) {
             if (array[i] instanceof Array && list[i] instanceof Array) {
-                if (!this.equals(list[i], array[i], comparePosition)) //recursive call
+                if (!this.equals(list[i], array[i], comparePosition)) // recursive call
                     return false;
             }
             else if (array[i] instanceof Object) {
-                for (var key in array[i]) {
+                for (const key in array[i]) {
                     if (array[i].hasOwnProperty(key) && array[i][key] instanceof Array) {
-                        if (!this.equals(list[i][key], array[i][key], comparePosition)) //recursive call
+                        if (!this.equals(list[i][key], array[i][key], comparePosition)) // recursive call
                             return false;
                     }
                 }
@@ -366,109 +366,109 @@ export class List<T> extends Array<T>{
 }
 
 Array.prototype.Add = function (item) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Add(item);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Add(item);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.AddRange = function () {
-    List.prototype._array = this;
-    var args = arguments;
-    if (Object.prototype.toString.call(args) === '[object Array]' || Object.prototype.toString.call(args[0]) === '[object Array]')
+    (List.prototype as any)._array = this;
+    let args = arguments;
+    if (Object.prototype.toString.call(args) === "[object Array]" || Object.prototype.toString.call(args[0]) === "[object Array]")
         args = args[0];
 
-    var returnValue = List.prototype.AddRange(args);
-    List.prototype._array = null;
+        const returnValue = List.prototype.AddRange(args);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Any = function (delegate, args) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Any(delegate, args);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Any(delegate, args);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Clear = function () {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Clear();
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Clear();
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Contains = function (item) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Contains(item);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Contains(item);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Count = function (delegate, args) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Count(delegate, args);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Count(delegate, args);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Distinct = function (delegate, args) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Distinct(delegate, args);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Distinct(delegate, args);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Equals = function (list, comparePosition) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Equals(list, comparePosition);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Equals(list, comparePosition);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.First = function () {
     return this.length <= 0 ? undefined : this[0];
 };
 Array.prototype.Get = function (index) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Get(index);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Get(index);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.IndexOf = function (item) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.IndexOf(item);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.IndexOf(item);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Last = function () {
     return this.length <= 0 ? undefined : this[this.length - 1];
 };
 Array.prototype.Remove = function (item) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Remove(item);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Remove(item);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.RemoveAt = function (index) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.RemoveAt(index);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.RemoveAt(index);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.Select = function (delegate, args) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Select(delegate, args);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Select(delegate, args);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.ToArray = function () {
-    List.prototype._array = this;
-    var returnValue = List.prototype.ToArray();
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.ToArray();
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 Array.prototype.ToList = function () {
-    var list = new List();
-    for (var i = 0; i < this.length; i++)
+    const list = new List();
+    for (let i = 0; i < this.length; i++)
         list.push(this[i]);
     return list;
 };
 Array.prototype.Where = function (delegate, args) {
-    List.prototype._array = this;
-    var returnValue = List.prototype.Where(delegate, args);
-    List.prototype._array = null;
+    (List.prototype as any)._array = this;
+    const returnValue = List.prototype.Where(delegate, args);
+    (List.prototype as any)._array = null;
     return returnValue;
 };
 
