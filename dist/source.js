@@ -12,13 +12,22 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var List = /** @class */ (function (_super) {
     __extends(List, _super);
-    function List() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    /**
+     * instantiates a list either with, or with out Array or List
+     * var fruits = new List<Fruit>(favoriteFruits);
+     * var fruits = new List<Fruit>();
+       * @param array can be a list, an array, or null.
+     */
+    function List(array) {
+        var _this = _super.call(this) || this;
+        if (array)
+            _this.AddRange(array);
+        return _this;
     }
     /**
-     * Adds passed item to list.
-     * @param item element to add
-     */
+       * Adds passed item to list.
+       * @param item element to add
+       */
     List.prototype.Add = function (item) {
         try {
             this._array.push(item);
@@ -29,10 +38,10 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Adds all passed elements to list, elements can be either an Array<T>, a List<T> or even multiple elements e.g.
-     * fruits.AddRange(["apple", "banana", "lemon"]); fruits.AddRange(fruits2); fruits.AddRange("apple", "banana", "lemon");
-     * @param args either Array<T>, List<T> or multiple elements,
-     */
+       * Adds all passed elements to list, elements can be either an Array<T>, a List<T> or even multiple elements e.g.
+       * fruits.AddRange(["apple", "banana", "lemon"]); fruits.AddRange(fruits2); fruits.AddRange("apple", "banana", "lemon");
+       * @param args either Array<T>, List<T> or multiple elements,
+       */
     List.prototype.AddRange = function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -41,9 +50,10 @@ var List = /** @class */ (function (_super) {
         try {
             if (args === null || args[0] == null)
                 return false;
-            if (Object.prototype.toString.call(args) === '[object Array]')
+            if (Object.prototype.toString.call(args) === "[object Array]")
                 args = args[0];
-            else if (args.constructor.name === "Array" || args.constructor.name === "List")
+            else if (args.constructor.name === "Array" ||
+                args.constructor.name === "List")
                 args = args[0];
             for (var i = 0; i < args.length; i++)
                 this._array.push(args[i]);
@@ -54,10 +64,10 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Checks if list contains any elements. Delegate available. fruits.Any(x => x.Color === Color.Yellow) // e.g. 2
-     * @param delegate
-     * @param args
-     */
+       * Checks if list contains any elements. Delegate available. fruits.Any(x => x.Color === Color.Yellow) // e.g. 2
+       * @param delegate
+       * @param args
+       */
     List.prototype.Any = function (delegate, args) {
         if (delegate === void 0) { delegate = null; }
         try {
@@ -80,8 +90,8 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Removes all elements from list.
-     */
+       * Removes all elements from list.
+       */
     List.prototype.Clear = function () {
         try {
             for (var i = this._array.length; i >= 0; i--)
@@ -93,9 +103,9 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns true if list contains passed element.
-     * @param item
-     */
+       * Returns true if list contains passed element.
+       * @param item
+       */
     List.prototype.Contains = function (item) {
         try {
             return this._array.indexOf(item) > -1;
@@ -105,10 +115,10 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns listcount. Delegate available. fruits.Where(x => x.Color === Color.Yellow) // e.g. 2
-     * @param delegate boolean to compare by delegate
-     * @param args
-     */
+       * Returns listcount. Delegate available. fruits.Where(x => x.Color === Color.Yellow) // e.g. 2
+       * @param delegate boolean to compare by delegate
+       * @param args
+       */
     List.prototype.Count = function (delegate, args) {
         if (delegate === void 0) { delegate = null; }
         try {
@@ -132,11 +142,36 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns new list removes duplicates and select items from delegate if set.
-     * Works on complex objects only, if elements inside are equal.
-     * @param delegate distinct values to return.
+     * Summarizes numbers within a list, ignoring invalid values, and converts strings if possible
+     * @param delegate must be a number
      * @param args
      */
+    List.prototype.Sum = function (delegate, args) {
+        if (delegate === void 0) { delegate = null; }
+        try {
+            if (delegate && !this.validDelegate(delegate))
+                return 0;
+            var count = 0;
+            for (var i = 0; i < this._array.length; i++) {
+                var c = +this._array[i];
+                if (delegate)
+                    c = +delegate.call(args, c);
+                if (typeof c !== "number" || isNaN(c) || c === null)
+                    continue;
+                count += c;
+            }
+            return count;
+        }
+        catch (ex) {
+            throw new Error(ex);
+        }
+    };
+    /**
+       * Returns new list removes duplicates and select items from delegate if set.
+       * Works on complex objects only, if elements inside are equal.
+       * @param delegate distinct values to return.
+       * @param args
+       */
     List.prototype.Distinct = function (delegate, args) {
         if (delegate === void 0) { delegate = null; }
         try {
@@ -158,10 +193,10 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Compares two lists
-     * @param list List to compare with
-     * @param comparePosition default true, if false, equality will not be checked by position.
-     */
+       * Compares two lists
+       * @param list List to compare with
+       * @param comparePosition default true, if false, equality will not be checked by position.
+       */
     List.prototype.Equals = function (list, comparePosition) {
         if (comparePosition === void 0) { comparePosition = true; }
         try {
@@ -172,8 +207,8 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns first element of list.
-     */
+       * Returns first element of list.
+       */
     List.prototype.First = function () {
         try {
             return this._array.First();
@@ -183,9 +218,9 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns element at index
-     * @param index
-     */
+       * Returns element at index
+       * @param index
+       */
     List.prototype.Get = function (index) {
         try {
             return this._array[index];
@@ -195,9 +230,9 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns index of passed element in list.
-     * @param item
-     */
+       * Returns index of passed element in list.
+       * @param item
+       */
     List.prototype.IndexOf = function (item) {
         try {
             return this._array.indexOf(item);
@@ -207,8 +242,8 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns last element of list.
-     */
+       * Returns last element of list.
+       */
     List.prototype.Last = function () {
         try {
             return this._array.Last();
@@ -218,9 +253,9 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Removes passed item from list
-     * @param item Item to remove
-     */
+       * Removes passed item from list
+       * @param item Item to remove
+       */
     List.prototype.Remove = function (item) {
         try {
             var expectedLength = this._array.length - 1;
@@ -233,9 +268,9 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Removes item at passed index.
-     * @param index
-     */
+       * Removes item at passed index.
+       * @param index
+       */
     List.prototype.RemoveAt = function (index) {
         try {
             this._array.splice(index, 1);
@@ -246,10 +281,10 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns new list with by delegate selected value.
-     * @param delegate
-     * @param args
-     */
+       * Returns new list with by delegate selected value.
+       * @param delegate
+       * @param args
+       */
     List.prototype.Select = function (delegate, args) {
         var list = new Array();
         try {
@@ -268,8 +303,8 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Converts List<T> to Array. Needed for serialization e.g. with ajax calls.
-     */
+       * Converts List<T> to Array. Needed for serialization e.g. with ajax calls.
+       */
     List.prototype.ToArray = function () {
         try {
             var array = new Array();
@@ -282,10 +317,10 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * Returns list by delegate fruits.Where(x => x.Color === Color.Red);
-     * @param delegate
-     * @param args
-     */
+       * Returns list by delegate fruits.Where(x => x.Color === Color.Red);
+       * @param delegate
+       * @param args
+       */
     List.prototype.Where = function (delegate, args) {
         try {
             var list = new Array();
@@ -305,22 +340,42 @@ var List = /** @class */ (function (_super) {
         }
     };
     /**
-     * needed to call recursive
+     * Creates list of numbers, within a specified range.
+     * @param start where to start
+     * @param count count of numbers to create
      */
+    List.Range = function (start, count) {
+        try {
+            if (count <= 0)
+                throw new Error("Count cant be less or equal to zero.");
+            var numbers = new List();
+            for (var i = start; i < count + start; i++)
+                numbers.push(i);
+            return numbers;
+        }
+        catch (ex) {
+            throw new Error(ex);
+        }
+    };
+    /**
+       * needed to call recursive
+       */
     List.prototype.equals = function (list, array, comparePosition) {
         if (!list)
             return false;
-        if (array.length != list.length)
+        if (array.length !== list.length)
             return false;
         for (var i = 0, l = array.length; i < l; i++) {
             if (array[i] instanceof Array && list[i] instanceof Array) {
                 if (!this.equals(list[i], array[i], comparePosition))
+                    // recursive call
                     return false;
             }
             else if (array[i] instanceof Object) {
                 for (var key in array[i]) {
                     if (array[i].hasOwnProperty(key) && array[i][key] instanceof Array) {
                         if (!this.equals(list[i][key], array[i][key], comparePosition))
+                            // recursive call
                             return false;
                     }
                 }
@@ -353,7 +408,8 @@ Array.prototype.Add = function (item) {
 Array.prototype.AddRange = function () {
     List.prototype._array = this;
     var args = arguments;
-    if (Object.prototype.toString.call(args) === '[object Array]' || Object.prototype.toString.call(args[0]) === '[object Array]')
+    if (Object.prototype.toString.call(args) === "[object Array]" ||
+        Object.prototype.toString.call(args[0]) === "[object Array]")
         args = args[0];
     var returnValue = List.prototype.AddRange(args);
     List.prototype._array = null;
@@ -380,6 +436,12 @@ Array.prototype.Contains = function (item) {
 Array.prototype.Count = function (delegate, args) {
     List.prototype._array = this;
     var returnValue = List.prototype.Count(delegate, args);
+    List.prototype._array = null;
+    return returnValue;
+};
+Array.prototype.Sum = function (delegate, args) {
+    List.prototype._array = this;
+    var returnValue = List.prototype.Sum(delegate, args);
     List.prototype._array = null;
     return returnValue;
 };
@@ -449,3 +511,4 @@ Array.prototype.Where = function (delegate, args) {
     List.prototype._array = null;
     return returnValue;
 };
+//# sourceMappingURL=source.js.map
