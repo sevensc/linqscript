@@ -82,8 +82,7 @@ fruits.Distinct(x => x.Name)
 ```
 ```typescript
 List.Range(3, 10)
-```
-```json
+
 [3,4,5,6,7,8,9,10,11,12] // starting at 3, generates 10 numbers
 ```
 ```typescript
@@ -123,7 +122,7 @@ var sumPlusOne = numbersToSum.Sum(x => x+1); // 38 -> use delegate to manipulate
 | `ToArray`      	|   Converts list to array. Important for serialization.    | `item`        			|
 | `Count`        	|   Returns listcount.                                      |               			|
 | `Count`        	|   Returns listcount by delegate.                          | `Delegate`    			|
-| `Sum`        		|   Summarizes numbers in list. 	                        | `Delegate`    			|
+| `Sum`        		|   Summarizes numbers in list. 	                        |			    			|
 | `Sum`        		|   Summarizes numbers in list by delegate.                 | `Delegate`    			|
 | `Any`          	|   Returns true if list contains any item.                 |              		 		|
 | `Any`          	|   Returns true if list contains any item by delegate.     | `Delegate`				|

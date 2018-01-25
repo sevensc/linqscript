@@ -1,8 +1,8 @@
 {
   "name": "linqscript",
-  "version": "1.3.2",
-  "description": " C# alike List in Javascript. Simple lightweight lambda syntax library for Typescript, extending Array",
-  "main": "source.ts",
+  "version": "1.4.0",
+  "description": " C# alike List in Javascript. Simple lightweight lambda syntax library for Typescript, extending Array. Works with Angular",
+  "main": "dist/source.js",
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/tests.ts",
     "build": "gulp"
@@ -11,7 +11,15 @@
     "type": "git",
     "url": "https://github.com/sevensc/linqscript.git"
   },
-  "keywords": ["linqscript", "linq", "linqjs", "lambda", "typescript", "array"],
+  "keywords": [
+    "linqscript",
+    "linq",
+    "linqjs",
+    "lambda",
+    "typescript",
+    "array",
+    "angular"
+  ],
   "author": "Sven Ulrich <mail@sven-ulrich.net> (sven-ulrich.net)",
   "license": "MIT",
   "bugs": {
@@ -25,7 +33,7 @@
     "chai": "^4.1.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.1",
-    "mocha": "^3.4.2",
+    "mocha": "^4.0.1",
     "ts-node": "^3.2.0",
     "typescript": "^2.6.1"
   },
