@@ -1,11 +1,11 @@
 {
   "name": "linqscript",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": " C# alike List in Javascript. Simple lightweight lambda syntax library for Typescript, extending Array. Works with Angular",
-  "main": "dist/source.js",
+  "main": "dist/index.min.js",
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/tests.ts",
-    "build": "gulp"
+    "build": "gulp default && gulp compress"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
     "linq",
     "linqjs",
     "lambda",
+    "list",
     "typescript",
     "array",
     "angular"
@@ -32,8 +33,11 @@
     "@types/mocha": "^2.2.41",
     "chai": "^4.1.0",
     "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
     "gulp-typescript": "^3.2.1",
+    "gulp-uglify": "^3.0.0",
     "mocha": "^4.0.1",
+    "pump": "^2.0.1",
     "ts-node": "^3.2.0",
     "typescript": "^2.6.1"
   },

@@ -2,7 +2,7 @@
 # C# alike List in Javascript. Simple lightweight lambda syntax library for Typescript, extending Array.
 ## No jQuery required! Unit tested.
 ##### Typescript arrow functions allows us, to use lambda syntax, which makes this easy to use. 
-##### This library extends the native Array. Use full advantage of an Array, extended with this methods.
+##### This library extends the native Array. Use full advantage of an Array, extended with this methods. Works with Angular.
 
 ```typescript
 import { List } from 'linqscript';

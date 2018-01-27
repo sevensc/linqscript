@@ -1,16 +1,11 @@
 {
   "files": [
-    "source/source.ts"
+      "dist/index.ts"
   ],
-  "compileOnSave": true,
   "compilerOptions": {
-    
-    "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
-    "module": "commonjs", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
-    "sourceMap": true, /* Generates corresponding '.map' file. */
-    "strict": true, /* Enable all strict type-checking options. */
-    "noImplicitAny": true, /* Raise error on expressions and declarations with an implied 'any' type. */
-    "strictNullChecks": false /* Enable strict null checks. */,
-    "outDir": "./dist"
-  }
+      "noImplicitAny": true,
+      "removeComments": true,
+      "target": "es5", 
+      "module": "commonjs"        
+  }    
 }

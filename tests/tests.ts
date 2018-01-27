@@ -1,4 +1,4 @@
-import { List } from "../source/source";
+import { List } from "../dist/index";
 import { expect } from "chai";
 import "mocha";
 
