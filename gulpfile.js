@@ -14,8 +14,8 @@ gulp.task("default", function() {
 
 gulp.task("rename", function(cb) {
   return gulp
-    .src("dist/index.js")
-    .pipe(rename("index.min.js"))
+    .src("dist/list.js")
+    .pipe(rename("list.min.js"))
     .pipe(gulp.dest("dist"));
 });
 

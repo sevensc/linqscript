@@ -1,6 +1,6 @@
 {
   "files": [
-      "dist/index.ts"
+      "dist/list.ts"
   ],
   "compilerOptions": {
       "noImplicitAny": true,

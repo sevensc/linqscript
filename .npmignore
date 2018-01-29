@@ -1,7 +1,7 @@
 tests\*
-dist\index.ts
+dist\list.ts
 README-Developers.md
 gulpfile.js
-dist\index.js
+dist\list.js
 tsconfig.json
 tslint.json

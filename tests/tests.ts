@@ -1,4 +1,5 @@
-import { List } from "../dist/index";
+import { List } from "../dist/list";
+import "../dist/list";
 import { expect } from "chai";
 import "mocha";
 
@@ -126,6 +127,24 @@ describe("ToArray()", () => {
     list.Add("blue");
 
     var array = list.ToArray();
+    var actual = Object.prototype.toString.call(array) === "[object Array]";
+
+    console.log(
+      "Result: " +
+        JSON.stringify(`type of ${Object.prototype.toString.call(array)}`)
+    );
+    expect(actual).to.equal(true);
+  });
+});
+
+describe("ToList()", () => {
+  it("should return true if list converted to Array", () => {
+    var array = new Array<string>();
+    array.push("red");
+    array.push("yellow");
+    array.push("blue");
+
+    var list = array.ToList();
     var actual = Object.prototype.toString.call(array) === "[object Array]";
 
     console.log(
@@ -395,6 +414,56 @@ describe("Distinct()", () => {
 
 describe("Equals()", () => {
   it("should return true if lists are equal", () => {
+    var fruits = new List<Fruit>();
+
+    var apple = new Fruit();
+    apple.Color = Color.Red;
+    apple.Name = "Apple";
+    apple.Tastes.Add("sweet");
+    apple.Tastes.Add("sour");
+    fruits.Add(apple);
+
+    var banana = new Fruit();
+    banana.Color = Color.Yellow;
+    banana.Name = "Banana";
+    banana.Tastes.Add("sweet");
+    fruits.Add(banana);
+
+    var grape = new Fruit();
+    grape.Color = Color.Blue;
+    grape.Name = "Grape";
+    grape.Tastes.Add("sweet");
+    grape.Tastes.Add("fruity");
+    fruits.Add(grape);
+
+    var fruits2 = new List<Fruit>();
+    var apple2 = new Fruit();
+    apple2.Color = Color.Red;
+    apple2.Name = "Apple";
+    apple2.Tastes.Add("sweet");
+    apple2.Tastes.Add("sour");
+    fruits2.Add(apple2);
+
+    var banana2 = new Fruit();
+    banana2.Color = Color.Yellow;
+    banana2.Name = "Banana";
+    banana2.Tastes.Add("sweet");
+    fruits2.Add(banana2);
+
+    var grape2 = new Fruit();
+    grape2.Color = Color.Blue;
+    grape2.Name = "Grape";
+    grape2.Tastes.Add("sweet");
+    grape2.Tastes.Add("fruity");
+    fruits2.Add(grape2);
+    console.log(JSON.stringify(fruits));
+    console.log(JSON.stringify(fruits2));
+    var actual = fruits.Equals(fruits2);
+
+    expect(actual).to.equal(true);
+  });
+
+  it("should return true if lists are equal, with wrong positions", () => {
     var fruits = new List<Fruit>();
 
     var apple = new Fruit();

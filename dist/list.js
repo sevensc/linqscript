@@ -149,10 +149,10 @@ var List = (function (_super) {
             return new List();
         }
     };
-    List.prototype.Equals = function (list, comparePosition) {
-        if (comparePosition === void 0) { comparePosition = true; }
+    List.prototype.Equals = function (list, deepCompare) {
+        if (deepCompare === void 0) { deepCompare = true; }
         try {
-            return this.equals(list, this._array, comparePosition);
+            return this.equals(list, this._array, deepCompare);
         }
         catch (ex) {
             return false;

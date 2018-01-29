@@ -1,2 +1,3 @@
-import { List } from "./dist/index";
+import { List } from "./dist/list";
 export { List };
+  
